@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="page">
+ <view class="page__hd">
+ <view class='top'>
+    <view class="page__title">{{city}}</view>
+    <view class='page__title'>{{currentTime}}</view>
+    <view class='page_center'>
+        <view class='page_tem'>{{currentTemperature}}</view>
+        <view class='weather_state'>{{weatherData[0].weather}}    {{weatherData[0].wind}}</view>
+        <view class="weather">{{currentDate}}  {{weatherData[0].weather}}  {{weatherData[0].temperature}}</view>
+    </view>
+  </view>
+ </view>
+</view>
+<view class="page__bd">
+   <view class='kind-list'>
+     <view wx:for="{{weatherData}}" wx:for-item='itemName' wx:for-index='j' wx:key="index">
+                <view wx:if="{{j>0}}" class="kind-list__item" >
+                        <view class="weui-flex__item">{{itemName.date}}   {{itemName.wind}}  {{itemName.weather}}</view>
+                         <image class="kind-flex__img" wx:if="{{currentTime >= '06' && currentTime < '18'}}" src='{{itemName.dayPictureUrl}}' mode="aspectFill" class='pic'></image>
+                        <image class="kind-list_img" wx:else src='{{itemName.nightPictureUrl}}' mode="aspectFill" class='pic'></image>      <view class="weui-flex__item">{{itemName.temperature}}</view>
+                      
+                        
+                </view>
+            </view>
+      </view>
+</view>
