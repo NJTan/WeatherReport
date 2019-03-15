@@ -3,7 +3,6 @@
 	"packOptions": {
 		"ignore": []
 	},
-	"miniprogramRoot": "src/",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
@@ -13,9 +12,9 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.5.1",
+	"libVersion": "2.6.2",
 	"appid": "wxfc0304f1481be3ce",
-	"projectname": "mini-pro-framework",
+	"projectname": "%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E4%BF%AE%E6%94%B9",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

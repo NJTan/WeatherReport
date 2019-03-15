@@ -11,10 +11,8 @@ Page({
     currentTemperature:'',//当前温度
     currentTime:'',//当前时间
     currentDate:'',//当前日期
-    // 用于保存当日天气数据
-    weatherData: [],
-    // 用于保存未来天气数据
-    future: {}
+    // 用于天气数据
+    weatherData: []
   },
   //获取地理位置的方法
   getLocation:function(){
@@ -77,7 +75,17 @@ Page({
                               duration: 1000
                             })
                           }
-                        }
+                          else{
+                            wx.showToast({
+                              title: '取消获取',
+                              content: '退出小程序'
+                            });
+                            wx.navigateBack({
+                              delta: -1
+                            })
+                          }
+                          },
+                         
                       })
 
                       //授权成功之后
@@ -108,21 +116,32 @@ Page({
                               console.log(city);
                               that.getWeatherData(city);
                             },
-                            fail: function (res) {
-                              wx.showToast({
-                                title: '网络不好请重试',
-                              });
-                              // getLocation();
-                            },
+                            
                           })
                         }
                       })
                     }
+                    else{
+                      wx.showToast({
+                        title: '取消获取',
+                        content: '退出小程序'
+                      });
+                       wx.navigateBack({
+                        delta: -1
+                      })
+
+                    }
                   },
-                  fail: function (res) {
-                    wx.showToast({
-                      title: '网络不好请重试',
-                    });
+                  fail: function (tip) {
+                    if(tip.cancel){
+                        wx.showToast({
+                          title: '取消获取',
+                          content:'退出小程序'
+                        });
+                      wx.navigateBack({
+                        delta: -1
+                      })
+                    }
                   }
                 })
               }
